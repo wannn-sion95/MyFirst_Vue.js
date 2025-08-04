@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js Dasar</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <style>
+      input {
+        margin-top: 10px;
+        display: block;
+        padding: 6px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><center>Belajar Vue.js</center></h1>
+    <div id="app">
+      <h2>Menghitung Total Belanjaan</h2>
+      <input
+        type="number"
+        v-model.number="jumlah"
+        placeholder="Jumlah barang"
+      />
+      <input
+        type="number"
+        v-model.number="harga"
+        placeholder="Harga per barang"
+      />
+      <p>Total harga: Rp{{ totalFormatted }}</p>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          jumlah: 0,
+          harga: 0,
+        },
+        computed: {
+          total() {
+            return this.jumlah * this.harga;
+          },
+          totalFormatted() {
+            return this.total.toLocaleString("id-ID");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
